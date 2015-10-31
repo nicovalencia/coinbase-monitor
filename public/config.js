@@ -20,7 +20,7 @@ System.config({
     "flux": "npm:flux@2.1.1",
     "lodash": "npm:lodash@3.10.1",
     "material-ui": "npm:material-ui@0.13.1",
-    "react": "npm:react@0.13.3",
+    "react": "npm:react@0.14.1",
     "react-tap-event-plugin": "npm:react-tap-event-plugin@0.2.1",
     "reqwest": "npm:reqwest@2.0.5",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -145,7 +145,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "react": "npm:react@0.13.3",
+      "react": "npm:react@0.14.1",
       "react-addons-create-fragment": "npm:react-addons-create-fragment@0.14.1",
       "react-addons-pure-render-mixin": "npm:react-addons-pure-render-mixin@0.14.1",
       "react-addons-transition-group": "npm:react-addons-transition-group@0.14.1",
@@ -164,28 +164,23 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:react-addons-create-fragment@0.14.1": {
-      "react": "npm:react@0.13.3"
+      "react": "npm:react@0.14.1"
     },
     "npm:react-addons-pure-render-mixin@0.14.1": {
-      "react": "npm:react@0.13.3"
+      "react": "npm:react@0.14.1"
     },
     "npm:react-addons-transition-group@0.14.1": {
-      "react": "npm:react@0.13.3"
+      "react": "npm:react@0.14.1"
     },
     "npm:react-addons-update@0.14.1": {
-      "react": "npm:react@0.13.3"
+      "react": "npm:react@0.14.1"
     },
     "npm:react-dom@0.14.1": {
-      "react": "npm:react@0.13.3"
+      "react": "npm:react@0.14.1"
     },
     "npm:react-tap-event-plugin@0.2.1": {
       "fbjs": "npm:fbjs@0.2.1",
       "react": "npm:react@0.14.1"
-    },
-    "npm:react@0.13.3": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "envify": "npm:envify@3.4.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:react@0.14.1": {
       "envify": "npm:envify@3.4.0",

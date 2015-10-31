@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardHeader, FontIcon} from 'material-ui';
+import {Card, CardHeader, FontIcon, CircularProgress} from 'material-ui';
 
 import AccountStore from 'src/stores/account-store';
 
@@ -33,7 +33,7 @@ class Accounts extends React.Component {
       wallet: 'account_balance_wallet'
     };
 
-    if (this.state.accounts) {
+    if (this.state.accounts.length) {
 
       accounts = this.state.accounts.map((account) => {
 
@@ -50,13 +50,17 @@ class Accounts extends React.Component {
             </Card>
           </section>
         );
-      })
+      });
+
+    } else {
+
+      accounts = <CircularProgress mode="indeterminate" />;
 
     }
 
     return (
       <div>
-        {accounts || 'Loading Accounts...'}
+        {accounts}
       </div>
     );
   }
