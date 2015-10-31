@@ -18,19 +18,21 @@
   "license": "ISC",
   "jspm": {
     "directories": {
-      "packages": "public/jspm_packages"
+      "baseURL": "public"
     },
-    "configFile": "public/config.js",
     "dependencies": {
+      "events": "npm:events@^1.1.0",
       "flux": "npm:flux@^2.1.1",
       "lodash": "npm:lodash@^3.10.1",
-      "react": "npm:react@^0.13.3",
+      "material-ui": "npm:material-ui@^0.13.1",
+      "react-tap-event-plugin": "npm:react-tap-event-plugin@^0.2.1",
       "reqwest": "npm:reqwest@^2.0.4"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
+      "core-js": "npm:core-js@^1.1.4",
+      "react": "npm:react@^0.13.3"
     }
   }
 }
