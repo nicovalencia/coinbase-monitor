@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 
 import ExchangeStore from 'src/stores/exchange-store';
 
@@ -26,9 +25,14 @@ class Exchange extends React.Component {
 
   render() {
 
+    let priceStyle = {
+      'font-size': '150%',
+      'color': '#999999'
+    };
+
     return (
       <div id="exchange">
-        BTC: ${this.state.usd || 'Loading current price...'}
+        <span style={priceStyle}>BTC: ${this.state.usd || 'Loading current price...'}</span>
       </div>
     );
 

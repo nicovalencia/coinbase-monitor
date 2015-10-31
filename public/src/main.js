@@ -1,11 +1,11 @@
 import React from 'react';
-import {Tabs, Tab} from 'material-ui';
+import {Tabs, Tab, Paper} from 'material-ui';
 
 import Exchange from './components/exchange';
 import ExchangeStore from './stores/exchange-store';
 import Accounts from './components/accounts';
 import AccountStore from 'src/stores/account-store';
-
+import Footer from './components/footer';
 
 // Boostrap data:
 ExchangeStore.bootstrap();
@@ -21,6 +21,15 @@ class App extends React.Component {
   }
 
   render() {
+
+    let paperStyle = {
+      margin: '30px 15px 0',
+      padding: '30px'
+    };
+
+    let paperStyleMiddle = {
+      margin: '30px 15px 0'
+    };
 
     let tabItemContainerStyle = {
       'text-transform': 'capitalize'
@@ -44,12 +53,23 @@ class App extends React.Component {
 
     return (
       <div id="app">
-        <Exchange />
-        <Tabs
-          tabItemContainerStyle={tabItemContainerStyle}
-          value={this.state.activeTab}>
-          {tabs}
-        </Tabs>
+
+        <Paper style={paperStyle}>
+          <Exchange />
+        </Paper>
+
+        <Paper style={paperStyleMiddle}>
+          <Tabs
+            tabItemContainerStyle={tabItemContainerStyle}
+            value={this.state.activeTab}>
+            {tabs}
+          </Tabs>
+        </Paper>
+
+        <Paper style={paperStyle}>
+          <Footer />
+        </Paper>
+
       </div>
     );
   }
