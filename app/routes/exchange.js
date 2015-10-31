@@ -1,8 +1,8 @@
-import coinbaseRequest from '../lib/coinbase-request';
+import coinbaseAdapter from '../lib/coinbase-adapter';
 
-export default function exchangeRate(req, res, next) {
-  coinbaseRequest('/exchange-rates?currency=BTC', (err, resp) => {
+export default function exchangeRoute(req, res, next) {
+  coinbaseAdapter.getBuyPrice({ 'currency': 'USD' }, (err, resp) => {
     if (err) next(err);
-    res.send(resp.body);
+    res.send(resp.data.amount);
   });
 }

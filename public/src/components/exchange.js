@@ -5,7 +5,7 @@ import ExchangeStore from 'src/stores/exchange-store';
 
 function getStateFromStores() {
   return {
-    data: ExchangeStore.get()
+    usd: ExchangeStore.getUSD()
   };
 }
 
@@ -26,24 +26,12 @@ class Exchange extends React.Component {
 
   render() {
 
-    let data;
-
-    if (this.state.data.currency) {
-      data = (
-        <div>
-          <span>{this.state.data.currency}</span>:&nbsp;
-          <span>{this.state.data.rates.USD}</span>
-        </div>
-      );
-    } else {
-      data = 'Loading exchange data...';
-    }
-
     return (
       <div id="exchange">
-        {data}
+        BTC: ${this.state.usd || 'Loading current price...'}
       </div>
     );
+
   }
 
   _onChange() {

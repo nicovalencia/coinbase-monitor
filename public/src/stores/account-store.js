@@ -1,17 +1,17 @@
 import EventEmitter from 'events';
 import _ from 'lodash';
 
-import ExchangeApi from 'src/api/exchange-api';
+import AccountApi from 'src/api/account-api';
 
 const CHANGE_EVENT = 'change';
 
-var _prices = {};
+var _accounts = [];
 
-class ExchangeStore extends EventEmitter {
+class AccountStore extends EventEmitter {
 
   bootstrap() {
-    return ExchangeApi.getUSD().then((price) => {
-      _prices.USD = price;
+    return AccountApi.getAll().then((accounts) => {
+      _accounts = _accounts.concat(accounts);
       this.emitChange();
     });
   }
@@ -28,10 +28,10 @@ class ExchangeStore extends EventEmitter {
     this.removeListener(CHANGE_EVENT, callback);
   }
 
-  getUSD() {
-    return _prices.USD;
+  getAll() {
+    return _accounts;
   }
 
 }
 
-export default new ExchangeStore();
+export default new AccountStore();

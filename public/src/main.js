@@ -3,11 +3,13 @@ import {Tabs, Tab} from 'material-ui';
 
 import Exchange from './components/exchange';
 import ExchangeStore from './stores/exchange-store';
-
 import Accounts from './components/accounts';
+import AccountStore from 'src/stores/account-store';
+
 
 // Boostrap data:
 ExchangeStore.bootstrap();
+AccountStore.bootstrap();
 
 class App extends React.Component {
 

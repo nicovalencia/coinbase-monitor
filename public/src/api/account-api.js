@@ -1,14 +1,14 @@
 import reqwest from 'reqwest';
 
-class ExchangeApi {
+class AccountApi {
 
-  getUSD() {
+  getAll() {
     return reqwest({
-      url: '/exchange',
+      url: '/accounts',
       method: 'GET'
     });
   }
 
 }
 
-export default new ExchangeApi();
+export default new AccountApi();
