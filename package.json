@@ -1,0 +1,17 @@
+{
+  "name": "bitcoin",
+  "version": "1.0.0",
+  "description": "Coinbase Monitor",
+  "main": "bitcoin.js",
+  "dependencies": {
+    "crypto": "^0.0.3",
+    "express": "^4.13.3",
+    "request": "^2.65.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nico Valencia",
+  "license": "ISC"
+}
