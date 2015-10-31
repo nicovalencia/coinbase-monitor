@@ -1,6 +1,6 @@
 import express from 'express';
-import coinbaseRequest from './lib/coinbase-request';
-import exchangeRoute from './routes/exchange';
+import coinbaseRequest from './app/lib/coinbase-request';
+import exchangeRoute from './app/routes/exchange';
 
 let app = express();
 
