@@ -1,15 +1,24 @@
 import React from 'react';
+import {render} from 'react-dom'
+import {Router, Route, IndexRoute} from 'react-router';
 import {Tabs, Tab, Paper} from 'material-ui';
 
-import Exchange from './components/exchange';
+import history from 'src/lib/history';
+import AccountActionCreators from 'src/actions/account-action-creators';
+
 import ExchangeStore from './stores/exchange-store';
-import Accounts from './components/accounts';
 import AccountStore from 'src/stores/account-store';
+import TransactionStore from 'src/stores/transaction-store';
+
+import Exchange from './components/exchange';
+import Accounts from './components/accounts';
+import Account from './components/account';
 import Footer from './components/footer';
 
 // Boostrap data:
 ExchangeStore.bootstrap();
 AccountStore.bootstrap();
+TransactionStore.bootstrap();
 
 class App extends React.Component {
 
@@ -35,54 +44,57 @@ class App extends React.Component {
       'text-transform': 'capitalize'
     };
 
-    let tabs = [
-      {
-        value: 'accounts',
-        content: (<Accounts />)
-      }, {
-        value: 'etc',
-        content: (<p>etc...</p>)
-      }
-    ].map((tab) => {
-      return (
-        <Tab label={tab.value} onClick={this._handleTabClick.bind(this, tab.value)} value={tab.value}>
-          {tab.content}
-        </Tab>
-      );
-    });
-
     return (
-      <div id="app">
-
+      <div>
         <Paper style={paperStyle}>
           <Exchange />
         </Paper>
 
         <Paper style={paperStyleMiddle}>
+
           <Tabs
             tabItemContainerStyle={tabItemContainerStyle}
             value={this.state.activeTab}>
-            {tabs}
+
+            <Tab label="accounts" onClick={this._handleAccountsClick.bind(this)} value='accounts'>
+              {this.props.children}
+            </Tab>
+
+            <Tab label="etc" onClick={this._handleEtcClick.bind(this)} value='etc'>
+              <p>etc...</p>
+            </Tab>
+
           </Tabs>
+
         </Paper>
 
         <Paper style={paperStyle}>
           <Footer />
         </Paper>
-
       </div>
     );
   }
 
-  _handleTabClick(tabName) {
+  _handleAccountsClick() {
+    AccountActionCreators.showIndex();
     this.setState({
-      activeTab: tabName
+      activeTab: 'accounts'
+    })
+  }
+
+  _handleEtcClick() {
+    this.setState({
+      activeTab: 'etc'
     })
   }
 
 }
 
-React.render(
-  React.createElement(App, null),
-  document.getElementById('app')
-);
+render((
+  <Router history={history}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Accounts} />
+      <Route path="/accounts/:accountId" component={Account} />
+    </Route>
+  </Router>
+), document.getElementById('app'));

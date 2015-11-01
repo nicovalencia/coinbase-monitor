@@ -5,7 +5,10 @@
   "main": "bitcoin.js",
   "dependencies": {
     "coinbase": "^2.0.0",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "history": "^1.13.0",
+    "lodash": "^3.10.1",
+    "react-router": "^1.0.0-rc3"
   },
   "devDependencies": {},
   "scripts": {
@@ -22,8 +25,11 @@
     "dependencies": {
       "events": "npm:events@^1.1.0",
       "flux": "npm:flux@^2.1.1",
+      "history": "npm:history@^1.13.0",
       "lodash": "npm:lodash@^3.10.1",
       "material-ui": "npm:material-ui@^0.13.1",
+      "react-dom": "npm:react-dom@^0.14.1",
+      "react-router": "npm:react-router@^1.0.0-rc3",
       "react-tap-event-plugin": "npm:react-tap-event-plugin@^0.2.1",
       "reqwest": "npm:reqwest@^2.0.4"
     },

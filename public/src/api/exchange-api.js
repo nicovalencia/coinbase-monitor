@@ -4,7 +4,7 @@ class ExchangeApi {
 
   getUSD() {
     return reqwest({
-      url: '/exchange',
+      url: '/api/exchange',
       method: 'GET'
     });
   }

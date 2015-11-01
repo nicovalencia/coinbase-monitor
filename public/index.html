@@ -7,10 +7,13 @@
   </head>
   <body>
     <div id="app"></div>
-    <script src="jspm_packages/system.js"></script>
-    <script src="config.js"></script>
+    <script src="/jspm_packages/system.js"></script>
     <script>
-    	System.import('src/main.js');
+      System.config({
+        baseURL: '/'
+      });
+      System.import('/src/main.js');
 		</script>
+    <script src="/config.js"></script>
   </body>
 </html>

@@ -4,7 +4,14 @@ class AccountApi {
 
   getAll() {
     return reqwest({
-      url: '/accounts',
+      url: '/api/accounts',
+      method: 'GET'
+    });
+  }
+
+  get(id) {
+    return reqwest({
+      url: `/api/accounts/${id}`,
       method: 'GET'
     });
   }
