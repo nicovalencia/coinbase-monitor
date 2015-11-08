@@ -13,6 +13,7 @@ import TransactionStore from 'src/stores/transaction-store';
 import Exchange from './components/exchange';
 import Accounts from './components/accounts';
 import Account from './components/account';
+import DCACalculator from './components/dca-calculator';
 import Footer from './components/footer';
 
 // Boostrap data:
@@ -60,8 +61,8 @@ class App extends React.Component {
               {this.props.children}
             </Tab>
 
-            <Tab label="etc" onClick={this._handleEtcClick.bind(this)} value='etc'>
-              <p>etc...</p>
+            <Tab label="DCA Calculator" onClick={this._handleDCACalculatorClick.bind(this)} value='DCACalculator'>
+              {this.props.children}
             </Tab>
 
           </Tabs>
@@ -82,9 +83,10 @@ class App extends React.Component {
     })
   }
 
-  _handleEtcClick() {
+  _handleDCACalculatorClick() {
+    history.pushState({}, '/dca-calculator');
     this.setState({
-      activeTab: 'etc'
+      activeTab: 'DCACalculator'
     })
   }
 
@@ -95,6 +97,7 @@ render((
     <Route path="/" component={App}>
       <IndexRoute component={Accounts} />
       <Route path="/accounts/:accountId" component={Account} />
+      <Route path="/dca-calculator" component={DCACalculator} />
     </Route>
   </Router>
 ), document.getElementById('app'));

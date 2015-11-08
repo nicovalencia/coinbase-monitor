@@ -3,6 +3,7 @@ import {List, ListItem, CircularProgress, FlatButton} from 'material-ui';
 
 import AccountStore from 'src/stores/account-store';
 import TransactionActionCreators from 'src/actions/transaction-action-creators';
+import PriceDetail from 'src/components/price-detail';
 
 function getStateFromStores(props) {
   return {
@@ -32,10 +33,13 @@ class Transactions extends React.Component {
     if (this.state.transactions.length) {
 
       let items = this.state.transactions.map((transaction) => {
+
+        let priceDetail = <PriceDetail amount={transaction.amount} nativeAmount={transaction.native_amount} type={transaction.type} />;
+
         return (
           <ListItem
             primaryText={transaction.type}
-            secondaryText={transaction.amount.amount}>
+            secondaryText={priceDetail}>
           </ListItem>
         );
       });
