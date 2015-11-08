@@ -1,21 +1,46 @@
 import React from 'react';
 import _ from 'lodash';
 
+import PriceStore from 'src/stores/price-store';
 import dcaCalculator from 'src/lib/dca-calculator';
+
+function getStateFromStores() {
+
+  let prices = PriceStore.getAll();
+
+  return {
+    bootstrapped: (prices.length ? true : false),
+    prices
+  }
+}
 
 class DCACalculator extends React.Component {
 
   constructor() {
     super();
 
-    this.state = {
+    this.state = Object.assign({
       capital: 100,
       buyCount: 20,
       fee: 0.01,
       targetFrom: 1,
       targetTo: 5,
+      days: 7,
       calculations: []
-    };
+    }, getStateFromStores());
+
+    // Load historical price data if empty:
+    if (!this.state.prices.length) {
+      PriceStore.bootstrap();
+    }
+  }
+
+  componentDidMount() {
+    PriceStore.addChangeListener(this._onChange.bind(this));
+  }
+
+  componentWillUnmount() {
+    PriceStore.removeChangeListener(this._onChange.bind(this));
   }
 
   render() {
@@ -52,10 +77,18 @@ class DCACalculator extends React.Component {
       );
     });
 
+    let status;
+
+    if (!this.state.bootstrapped) {
+      status = (<span>Loading price history...</span>);
+    }
+
     return (
       <div>
 
         <h2>Calculator</h2>
+
+        {status}
 
         <label>Capital:</label>
         <input onChange={this._handleFormChange.bind(this, 'capital')} value={this.state.capital} />
@@ -69,7 +102,10 @@ class DCACalculator extends React.Component {
         <span>To:</span>
         <input onChange={this._handleFormChange.bind(this, 'targetTo')} value={this.state.targetTo} />
 
-        <button type="button" onClick={this._calc.bind(this)}>Calculate</button>
+        <label>Days:</label>
+        <input onChange={this._handleFormChange.bind(this, 'days')} value={this.state.days} />
+
+        <button type="button" onClick={this._calc.bind(this)} disabled={!this.state.bootstrapped}>Calculate</button>
 
         {calculations}
 
@@ -95,6 +131,7 @@ class DCACalculator extends React.Component {
         capital: this.state.capital,
         buyCount: this.state.buyCount,
         fee: this.state.fee,
+        days: this.state.days,
         target
       });
       calculations.push(calculation);
@@ -103,6 +140,10 @@ class DCACalculator extends React.Component {
     this.setState({
       calculations
     });
+  }
+
+  _onChange() {
+    this.setState(getStateFromStores(this.props));
   }
 
 }

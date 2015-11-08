@@ -1,9 +1,21 @@
-import mockData from 'src/lib/mock-data';
 import _ from 'lodash';
+
+import PriceStore from 'src/stores/price-store';
 
 export default function dcaCalculator(opts) {
 
-  let {capital, buyCount, target, fee} = opts;
+  let {capital, buyCount, target, fee, days} = opts;
+
+  let priceData = PriceStore.getAll();
+  let entries = days * 24 * 6; // Six 10 minute entries per hour, 24 hours per day
+
+  if (entries > priceData.length) {
+    throw new Error(`Insufficient price data for ${days} day report!`);
+  }
+  
+  let startIndex = priceData.length - entries; // start range at X days back
+  let rangedPriceData = priceData.slice(startIndex, priceData.length);
+
 
   let buyAmount = capital / buyCount;
 
@@ -14,7 +26,9 @@ export default function dcaCalculator(opts) {
   let sells = [];
 
   function getPrice(i) {
-    return mockData[Math.floor(mockData.length / buyCount * i)];
+    let index = Math.floor(rangedPriceData.length / buyCount * i);
+    let entry = rangedPriceData[index];
+    return entry.price;
   }
 
   function getPercentage(btcPrice) {
