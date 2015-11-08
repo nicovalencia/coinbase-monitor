@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
+import DCAChart from 'src/components/dca-chart';
 import PriceStore from 'src/stores/price-store';
 import dcaCalculator from 'src/lib/dca-calculator';
 
@@ -106,6 +107,8 @@ class DCACalculator extends React.Component {
         <input onChange={this._handleFormChange.bind(this, 'days')} value={this.state.days} />
 
         <button type="button" onClick={this._calc.bind(this)} disabled={!this.state.bootstrapped}>Calculate</button>
+
+        <DCAChart calculations={this.state.calculations} />
 
         {calculations}
 

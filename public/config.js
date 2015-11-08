@@ -15,13 +15,15 @@ System.config({
   map: {
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
-    "core-js": "npm:core-js@1.2.4",
+    "core-js": "npm:core-js@1.2.5",
+    "d3": "npm:d3@3.5.6",
     "events": "npm:events@1.1.0",
     "flux": "npm:flux@2.1.1",
     "history": "npm:history@1.13.0",
     "lodash": "npm:lodash@3.10.1",
     "material-ui": "npm:material-ui@0.13.1",
     "react": "npm:react@0.14.1",
+    "react-d3": "npm:react-d3@0.4.0",
     "react-dom": "npm:react-dom@0.14.1",
     "react-router": "npm:react-router@1.0.0-rc3",
     "react-tap-event-plugin": "npm:react-tap-event-plugin@0.2.1",
@@ -71,7 +73,7 @@ System.config({
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
     },
-    "npm:core-js@1.2.4": {
+    "npm:core-js@1.2.5": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -97,7 +99,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:fbjs@0.1.0-alpha.7": {
-      "core-js": "npm:core-js@1.2.4",
+      "core-js": "npm:core-js@1.2.5",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -105,13 +107,13 @@ System.config({
       "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
     },
     "npm:fbjs@0.2.1": {
-      "core-js": "npm:core-js@1.2.4",
+      "core-js": "npm:core-js@1.2.5",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "promise": "npm:promise@7.0.4",
       "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
     },
     "npm:fbjs@0.3.2": {
-      "core-js": "npm:core-js@1.2.4",
+      "core-js": "npm:core-js@1.2.5",
       "loose-envify": "npm:loose-envify@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "promise": "npm:promise@7.0.4",
@@ -196,6 +198,10 @@ System.config({
     "npm:react-addons-update@0.14.1": {
       "react": "npm:react@0.14.1"
     },
+    "npm:react-d3@0.4.0": {
+      "d3": "npm:d3@3.5.6",
+      "react": "npm:react@0.14.2"
+    },
     "npm:react-dom@0.14.1": {
       "react": "npm:react@0.14.1"
     },
@@ -209,6 +215,11 @@ System.config({
       "react": "npm:react@0.14.1"
     },
     "npm:react@0.14.1": {
+      "envify": "npm:envify@3.4.0",
+      "fbjs": "npm:fbjs@0.3.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:react@0.14.2": {
       "envify": "npm:envify@3.4.0",
       "fbjs": "npm:fbjs@0.3.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
